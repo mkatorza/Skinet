@@ -16,20 +16,20 @@ namespace API.Controllers
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest()
         {
-            var thing = _context.Products.Find(42);
-
-            if(thing == null)
+            var thing  = _context.Products.Find(420);
+            
+            if (thing == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
             return Ok();
         }
-
+        
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            var thing = _context.Products.Find(42);
+            var thing  = _context.Products.Find(42);
 
             var thingToReturn = thing.ToString();
 
@@ -39,14 +39,13 @@ namespace API.Controllers
         [HttpGet("badrequest")]
         public ActionResult GetBadRequest()
         {
-            return BadRequest();
+            return BadRequest(new ApiResponse(400));
         }
-
+        
         [HttpGet("badrequest/{id}")]
-        public ActionResult GetBadRequest(int id)
+        public ActionResult GetNotFoundRequest(int id)
         {
             return Ok();
         }
-
     }
 }
